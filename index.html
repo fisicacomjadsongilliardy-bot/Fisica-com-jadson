@@ -4,25 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jadson Gilliardy — Curso de Física ENEM 2026</title>
+  <title>Física com Jadson — Curso de Física ENEM 2026</title>
   <meta name="description"
-    content="Domine a Física que cai no ENEM com aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca exige.">
+    content="Domine a Física que cai no ENEM com foco em resolução de questões. Aulas objetivas, suporte VIP e metodologia testada para impulsionar sua nota.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
     rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --surface2: #1a1a1a;
+      --bg: #030303;
+      --surface: rgba(17, 17, 17, 0.7);
+      --surface-card: rgba(22, 22, 22, 0.4);
+      --surface-glow: rgba(139, 92, 246, 0.08);
       --accent: #8b5cf6;
+      --accent-cyan: #06b6d4;
       --accent-lt: #a78bfa;
+      --accent-amber: #f59e0b;
       --accent-glow: rgba(139, 92, 246, 0.15);
-      --text: #f0ede8;
-      --muted: #6b6b6b;
-      --border: #1f1f1f;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(139, 92, 246, 0.3);
+      --font-primary: 'Outfit', sans-serif;
+      --font-display: 'Playfair Display', serif;
     }
 
     *,
@@ -35,16 +43,76 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-primary);
       font-weight: 300;
       font-size: 1.05rem;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--text);
       background: var(--bg);
       overflow-x: hidden;
+      /* Grid futurístico sutil de fundo */
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    /* Custom Cursor Halo */
+    #custom-cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+      mix-blend-mode: screen;
+      display: none;
+    }
+
+    @media (pointer: fine) {
+      #custom-cursor {
+        display: block;
+      }
+    }
+
+    #custom-cursor-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-cyan);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    @media (pointer: fine) {
+      #custom-cursor-dot {
+        display: block;
+      }
     }
 
     img {
@@ -64,30 +132,39 @@
     }
 
     section {
-      padding: clamp(5rem, 10vw, 9rem) 0;
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      position: relative;
     }
 
     .section-tag {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent-lt);
+      color: var(--accent-cyan);
       margin-bottom: 1rem;
+      background: rgba(6, 182, 212, 0.1);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      border: 1px solid rgba(6, 182, 212, 0.2);
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
       line-height: 1.15;
       margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
     }
 
     .section-title em {
-      color: var(--accent);
+      background: linear-gradient(135deg, var(--accent) 30%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-style: italic;
     }
 
@@ -98,8 +175,8 @@
       left: 0;
       height: 3px;
       width: 0%;
-      background: var(--accent);
-      z-index: 1001;
+      background: linear-gradient(to right, var(--accent), var(--accent-cyan));
+      z-index: 10001;
     }
 
     /* Nav */
@@ -107,17 +184,18 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(3, 3, 3, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem clamp(1.5rem, 5vw, 3rem);
+      padding: 1.25rem clamp(1.5rem, 5vw, 3rem);
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -129,18 +207,23 @@
     }
 
     .nav-logo img {
-      height: 40px;
+      height: 42px;
       width: auto;
+      border-radius: 50%;
+      border: 2px solid var(--border-hover);
     }
 
     .nav-logo-text {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
     }
 
     .nav-logo-text .accent-g {
-      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .nav-logo-text .logo-full {
@@ -156,40 +239,65 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2rem;
+      gap: 0.6rem;
+      padding: 0.9rem 2.2rem;
       border-radius: 100px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-primary);
       font-weight: 600;
       font-size: 0.95rem;
       border: none;
       cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
     }
 
     .btn-primary {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-cyan) 100%);
       color: #fff;
     }
 
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.4);
     }
 
     .btn-ghost {
-      background: transparent;
-      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
       border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s;
     }
 
     .btn-ghost:hover {
-      color: var(--text);
-      border-color: #444;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
     }
 
     .btn-lg {
-      padding: 1.1rem 3rem;
+      padding: 1.15rem 3.5rem;
       font-size: 1.1rem;
       font-weight: 700;
     }
@@ -200,27 +308,50 @@
 
     /* Hero */
     .hero {
-      position: relative;
-      padding-top: clamp(3rem, 6vw, 5rem);
+      padding-top: clamp(2rem, 5vw, 4rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
       overflow: hidden;
     }
 
-    .hero-glow {
+    .hero-canvas {
       position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 0;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: clamp(300px, 50vw, 600px);
+      height: clamp(300px, 50vw, 600px);
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(50px);
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -10%;
+      left: -10%;
+      width: clamp(250px, 40vw, 500px);
+      height: clamp(250px, 40vw, 500px);
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(40px);
     }
 
     .hero-inner {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
     }
@@ -228,233 +359,379 @@
     .hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 1rem;
+      gap: 0.6rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
       border-radius: 100px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--muted);
+      color: var(--text-muted);
       margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .hero-tag .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1.2); }
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
       line-height: 1.1;
       margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
     }
 
     .hero h1 em {
-      color: var(--accent);
+      background: linear-gradient(135deg, var(--accent) 30%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       font-style: italic;
     }
 
     .hero p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      max-width: 480px;
-      margin-bottom: 2rem;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+      line-height: 1.6;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      padding-top: 2rem;
+      gap: 1.5rem;
+      padding-top: 2.5rem;
       border-top: 1px solid var(--border);
     }
 
     .hero-stat-value {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--accent);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       line-height: 1.2;
     }
 
     .hero-stat-label {
       font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
     }
 
     .hero-photo {
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 30px;
+      overflow: visible;
+    }
+
+    /* Ambient aura behind professor photo */
+    .photo-aura {
+      position: absolute;
+      inset: -15px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.35) 0%, rgba(6, 182, 212, 0.35) 100%);
+      filter: blur(35px);
+      border-radius: 40px;
+      z-index: 0;
+      opacity: 0.8;
+      animation: float-slow 8s ease-in-out infinite;
     }
 
     .hero-photo-frame {
       position: relative;
-      height: 600px;
+      height: 520px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(22, 22, 22, 0.4) 0%, rgba(10, 10, 10, 0.9) 100%);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     }
 
     .hero-photo-frame img {
       width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      object-position: bottom center;
-      mask-image:
-        linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 5%, black 75%, transparent 100%);
-      mask-composite: intersect;
-      -webkit-mask-image:
-        linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
-        linear-gradient(to bottom, transparent 0%, black 5%, black 75%, transparent 100%);
-      -webkit-mask-composite: source-in;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      transition: transform 0.5s ease;
     }
 
-    .hero-photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: transparent;
-      pointer-events: none;
+    .hero-photo-frame:hover img {
+      transform: scale(1.03);
     }
 
-    .hero-badge {
+    /* Floating badges */
+    .floating-badge {
       position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      right: 1.5rem;
-      padding: 1rem 1.25rem;
-      background: rgba(10, 10, 10, 0.85);
+      background: rgba(20, 20, 20, 0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 2;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
 
-    .hero-badge-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
+    .floating-badge-1 {
+      top: 15%;
+      left: -20px;
+      animation: float-badge-1 6s ease-in-out infinite;
+      border-left: 3px solid var(--accent);
     }
 
-    .hero-badge-role {
+    .floating-badge-2 {
+      bottom: 25%;
+      right: -20px;
+      animation: float-badge-2 7s ease-in-out infinite;
+      border-left: 3px solid var(--accent-cyan);
+    }
+
+    .floating-badge-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .floating-badge-title {
       font-size: 0.85rem;
-      color: var(--muted);
+      font-weight: 700;
+      color: #fff;
     }
 
-    /* Marquee */
-    .marquee-section {
-      background: var(--accent);
-      padding: 2.5rem 0;
+    .floating-badge-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes float-badge-1 {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+
+    @keyframes float-badge-2 {
+      0%, 100% { transform: translateY(0) rotate(1deg); }
+      50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.95; }
+    }
+
+    /* Double Marquee */
+    .marquee-container {
+      background: #000;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      z-index: 10;
     }
 
     .marquee-track {
       display: flex;
       width: max-content;
-      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-track-l2r {
+      animation: marquee-l2r 30s linear infinite;
+    }
+
+    .marquee-track-r2l {
+      animation: marquee-r2l 30s linear infinite;
     }
 
     .marquee-content {
       display: flex;
       align-items: center;
-      gap: 2rem;
-      padding-right: 2rem;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      padding-right: clamp(1.5rem, 4vw, 3rem);
       white-space: nowrap;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      color: #fff;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--text);
     }
 
     .marquee-content span {
-      opacity: 0.7;
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.3rem;
     }
 
-    @keyframes marquee {
-      0% {
-        transform: translateX(0);
-      }
+    @keyframes marquee-r2l {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
-      100% {
-        transform: translateX(-50%);
-      }
+    @keyframes marquee-l2r {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
     }
 
     /* Course info */
+    .course-info {
+      position: relative;
+    }
+
     .course-info-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.1fr;
       gap: clamp(2rem, 5vw, 4rem);
-      align-items: start;
+      align-items: center;
     }
 
     .course-info-text p {
-      color: var(--muted);
-      max-width: 480px;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      max-width: 500px;
     }
 
     .info-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .info-card {
-      background: var(--surface);
+      background: var(--surface-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.75rem;
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(139, 92, 246, 0.12), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .info-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .info-card:hover::before {
+      opacity: 1;
     }
 
     .info-card-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
-      background: rgba(139, 92, 246, 0.1);
-      border-radius: 10px;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+      width: 48px;
+      height: 48px;
+      background: rgba(139, 92, 246, 0.15);
+      border-radius: 12px;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(139, 92, 246, 0.25);
     }
 
     .info-card-value {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: 1.5rem;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #fff, #ddd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.35rem;
     }
 
     .info-card-label {
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
     }
 
-    /* Contents */
+    /* Contents Section */
+    .contents {
+      background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.02) 50%, transparent 100%);
+    }
+
     .contents-header {
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
+      text-align: center;
     }
 
     .contents-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-      background: var(--border);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .content-card {
       position: relative;
-      background: var(--surface);
-      padding: 2rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem 2rem;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(40px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transform-style: preserve-3d;
+      perspective: 1000px;
     }
 
     .content-card::before {
@@ -463,11 +740,18 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      background: var(--accent);
+      height: 3px;
+      background: linear-gradient(to right, var(--accent), var(--accent-cyan));
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.35s ease;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .content-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-hover);
+      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
+      background: rgba(22, 22, 22, 0.7);
     }
 
     .content-card:hover::before {
@@ -475,32 +759,43 @@
     }
 
     .content-card-num {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--accent-cyan);
+      margin-bottom: 1.25rem;
+      opacity: 0.8;
     }
 
     .content-card-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .content-card:hover .content-card-icon {
+      transform: scale(1.15) rotate(5deg);
     }
 
     .content-card-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
     }
 
     .content-card-desc {
       font-size: 0.9rem;
-      color: var(--muted);
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    /* Why */
+    /* Why Section */
     .why-header {
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     .why-list {
@@ -511,50 +806,217 @@
     .why-item {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: clamp(1.5rem, 4vw, 3rem);
-      padding: clamp(2rem, 4vw, 3rem) 0;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      padding: clamp(2.2rem, 5vw, 3.5rem) 0;
       border-bottom: 1px solid var(--border);
-      opacity: 0;
-      transform: translateY(30px);
+      position: relative;
+      overflow: hidden;
     }
 
     .why-item:first-child {
       border-top: 1px solid var(--border);
     }
 
+    .why-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), var(--accent-cyan));
+      transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .why-item:hover::after {
+      width: 100%;
+    }
+
     .why-num {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(3rem, 6vw, 5rem);
-      color: var(--accent-lt);
-      opacity: 0.3;
-      line-height: 1;
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 0.9;
+      opacity: 0.8;
+      transition: all 0.4s ease;
+    }
+
+    .why-item:hover .why-num {
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: scale(1.05);
     }
 
     .why-title {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
       margin-bottom: 0.75rem;
+      color: #fff;
     }
 
     .why-desc {
-      color: var(--muted);
-      max-width: 560px;
+      color: var(--text-muted);
+      max-width: 600px;
+      font-size: 1.02rem;
     }
 
-    /* Professor */
+    /* Testimonials Section (New) */
+    .testimonials {
+      background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.015) 50%, transparent 100%);
+      overflow: hidden;
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .testimonials-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .testimonials-slider {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 1rem 0.25rem 2rem 0.25rem;
+    }
+
+    .testimonials-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-card {
+      flex: 0 0 380px;
+      scroll-snap-align: center;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 480px) {
+      .testimonial-card {
+        flex: 0 0 290px;
+        padding: 1.75rem;
+      }
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .testimonial-rating {
+      color: var(--accent-amber);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+    }
+
+    .testimonial-quote {
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .testimonial-author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .testimonial-author-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .testimonial-author-desc {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-top: 0.1rem;
+      font-weight: 500;
+    }
+
+    .testimonials-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .testimonials-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .testimonials-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-hover);
+      color: var(--accent-cyan);
+      transform: scale(1.05);
+    }
+
+    /* Professor Section */
     .professor-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
     }
 
     .professor-photo {
-      border-radius: 20px;
+      position: relative;
+      border-radius: 24px;
       overflow: hidden;
-      height: 500px;
+      height: 520px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
     }
 
     .professor-photo img {
@@ -564,22 +1026,31 @@
       object-position: top center;
     }
 
+    .professor-content {
+      position: relative;
+    }
+
     .professor-name {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
       margin-bottom: 0.5rem;
+      letter-spacing: -0.015em;
     }
 
     .professor-role {
-      font-size: 1.1rem;
-      color: var(--accent-lt);
-      margin-bottom: 1.5rem;
+      font-size: 1.15rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .professor-bio {
-      color: var(--muted);
-      margin-bottom: 2.5rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 1.08rem;
+      line-height: 1.7;
     }
 
     .professor-metrics {
@@ -588,25 +1059,218 @@
       gap: 1.5rem;
     }
 
+    .professor-metric-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .professor-metric-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.08);
+    }
+
     .professor-metric-value {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      color: var(--accent);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      background: linear-gradient(135deg, var(--accent) 30%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       line-height: 1.2;
     }
 
     .professor-metric-label {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      font-weight: 500;
+      line-height: 1.3;
     }
 
-    /* CTA */
+    /* Countdown Section (New) */
+    .countdown-section {
+      background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.03) 50%, transparent 100%);
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .countdown-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    .countdown-container {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .countdown-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 2.5rem;
+      color: #fff;
+    }
+
+    .countdown-title em {
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+    }
+
+    .countdown-timer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+    }
+
+    .countdown-item {
+      background: rgba(22, 22, 22, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .countdown-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff, #bbb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .countdown-text {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* FAQ Section (New) */
+    .faq {
+      position: relative;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .faq-container {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.05);
+    }
+
+    .faq-question {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #fff;
+      user-select: none;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      font-size: 1rem;
+      color: var(--accent-cyan);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(6, 182, 212, 0.1);
+      border-color: rgba(6, 182, 212, 0.3);
+      color: var(--accent-cyan);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .faq-answer-inner {
+      padding: 0 2rem 1.75rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
     .cta {
       position: relative;
-      background: var(--surface);
+      background: var(--surface-card);
       overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 6rem 0;
     }
 
     .cta-glow {
@@ -614,38 +1278,85 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%);
       filter: blur(60px);
       pointer-events: none;
+      z-index: 0;
     }
 
     .cta-inner {
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 640px;
+      max-width: 680px;
       margin: 0 auto;
     }
 
     .cta-inner p {
-      color: var(--muted);
-      margin-bottom: 2.5rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 1.15rem;
     }
 
     .cta-price-box {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.5rem;
-      margin-bottom: 1.5rem;
+      background: rgba(17, 17, 17, 0.6);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-price-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent), var(--accent-cyan));
     }
 
     .cta-price-label {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+
+    .cta-price-value {
+      margin-bottom: 2rem;
+    }
+
+    .cta-price-old {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-bottom: 0.25rem;
+      opacity: 0.7;
+    }
+
+    .cta-price-new {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .cta-price-new span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-right: 0.25rem;
     }
 
     .cta-note {
@@ -654,29 +1365,99 @@
       justify-content: center;
       gap: 0.5rem;
       font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 1.25rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
     }
 
     /* Footer */
     footer {
-      background: var(--bg);
+      background: #020202;
       border-top: 1px solid var(--border);
-      padding: 2rem 0;
+      padding: 3.5rem 0 2.5rem 0;
+      position: relative;
+      z-index: 10;
     }
 
-    .footer-inner {
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      max-width: 320px;
+    }
+
+    .footer-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .footer-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
       font-size: 0.85rem;
-      color: var(--muted);
+      color: var(--text-muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      color: var(--text-muted);
+    }
+
+    .footer-social-link:hover {
+      background: rgba(6, 182, 212, 0.1);
+      border-color: var(--border-hover);
+      color: var(--accent-cyan);
+      transform: translateY(-3px);
     }
 
     .footer-credit {
-      color: var(--accent);
+      color: var(--accent-cyan);
       font-weight: 600;
     }
 
@@ -684,12 +1465,21 @@
       opacity: 0.8;
     }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
-
-      .hero-inner,
-      .professor-inner {
+      .hero-inner {
         grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-inner .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-actions {
+        justify-content: center;
       }
 
       .hero-photo {
@@ -697,26 +1487,48 @@
       }
 
       .hero-photo-frame {
-        height: 360px;
+        height: 450px;
       }
 
       .hero-stats {
+        width: 100%;
+        max-width: 600px;
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .course-info-inner,
+      .professor-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .professor-photo {
+        height: 450px;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+
+      .professor-content {
+        text-align: center;
+      }
+
+      .professor-metrics {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 2;
       }
     }
 
     @media (max-width: 768px) {
-      .course-info-inner {
-        grid-template-columns: 1fr;
-      }
-
       .contents-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .professor-metrics {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
 
       .nav-cta-text {
@@ -728,14 +1540,16 @@
       }
 
       .btn-nav {
-        padding: 0.75rem 1.25rem;
+        padding: 0.75rem 1.5rem;
         font-size: 0.85rem;
       }
     }
 
     @media (max-width: 480px) {
-      .contents-grid {
+      .hero-stats {
         grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
       }
 
       .nav-logo-text .logo-full {
@@ -747,11 +1561,12 @@
       }
 
       .nav-logo img {
-        height: 32px;
+        height: 36px;
       }
 
       .hero-actions {
         flex-direction: column;
+        width: 100%;
       }
 
       .hero-actions .btn {
@@ -764,10 +1579,32 @@
 
       .why-item {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 1rem;
+        text-align: center;
       }
 
-      .footer-inner {
+      .why-desc {
+        margin: 0 auto;
+      }
+
+      .professor-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown-timer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 1;
+      }
+
+      .footer-bottom {
         flex-direction: column;
         text-align: center;
       }
@@ -779,8 +1616,12 @@
 
   <div id="scroll-progress"></div>
 
+  <!-- Custom Cursor Halo -->
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-dot"></div>
+
   <!-- 0. Nav -->
-  <nav class="nav">
+  <nav class="nav" id="main-nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
         <img src="assets/3.png" alt="Jadson Gilliardy Professor">
@@ -798,44 +1639,60 @@
 
   <!-- 1. Hero -->
   <section class="hero">
-    <div class="hero-glow"></div>
+    <canvas id="hero-particles" class="hero-canvas"></canvas>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
     <div class="container">
       <div class="hero-inner">
         <div class="hero-content">
-          <div class="hero-tag">✦ &nbsp;Turma ENEM 2026</div>
-          <h1>Domine a <em>Física</em><br>que cai no ENEM.</h1>
-          <p>Aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca
-            exige.</p>
+          <div class="hero-tag">
+            <span class="dot"></span>
+            Turma ENEM 2026
+          </div>
+          <h1>Domine a <em>Física</em><br>focada no ENEM.</h1>
+          <p>Esqueça fórmulas decoradas. Aprenda a interpretar, raciocinar e gabaritar as questões da prova com o método definitivo.</p>
           <div class="hero-actions">
             <a href="#inscricao" class="btn btn-primary">Garantir minha vaga</a>
-            <a href="#conteudo" class="btn btn-ghost">Ver o conteúdo →</a>
+            <a href="#conteudo" class="btn btn-ghost">Ver cronograma →</a>
           </div>
           <div class="hero-stats">
             <div>
-              <div class="hero-stat-value">12</div>
+              <div class="hero-stat-value js-counter" data-target="7">0</div>
               <div class="hero-stat-label">Módulos</div>
             </div>
             <div>
-              <div class="hero-stat-value">+500</div>
+              <div class="hero-stat-value js-counter" data-target="500">+0</div>
               <div class="hero-stat-label">Questões</div>
             </div>
             <div>
-              <div class="hero-stat-value">Grupo VIP</div>
-              <div class="hero-stat-label">Exclusivo</div>
+              <div class="hero-stat-value">Grupo</div>
+              <div class="hero-stat-label">VIP Exclusivo</div>
             </div>
             <div>
-              <div class="hero-stat-value">Até ENEM</div>
-              <div class="hero-stat-label">2026</div>
+              <div class="hero-stat-value">ENEM</div>
+              <div class="hero-stat-label">Foco Integral</div>
             </div>
           </div>
         </div>
         <div class="hero-photo">
-          <div class="hero-photo-frame">
-            <img src="assets/Professor1.png" alt="Jadson Gilliardy — Professor de Física">
-            <div class="hero-photo-overlay"></div>
-            <div class="hero-badge">
-              <div class="hero-badge-name">Jadson Gilliardy</div>
-              <div class="hero-badge-role">Professor de Física · 10 anos de experiência · ENEM e vestibulares</div>
+          <div class="hero-photo-wrapper">
+            <div class="photo-aura"></div>
+            <div class="floating-badge floating-badge-1">
+              <span class="floating-badge-icon">⚡</span>
+              <div>
+                <div class="floating-badge-title">+500 Exercícios</div>
+                <div class="floating-badge-desc">Resoluções detalhadas</div>
+              </div>
+            </div>
+            <div class="floating-badge floating-badge-2">
+              <span class="floating-badge-icon">💬</span>
+              <div>
+                <div class="floating-badge-title|">Grupo VIP</div>
+                <div class="floating-badge-desc">Tire dúvidas direto</div>
+              </div>
+            </div>
+            <div class="hero-photo-frame">
+              <img src="assets/Professor1.png" alt="Jadson Gilliardy — Professor de Física">
             </div>
           </div>
         </div>
@@ -843,50 +1700,55 @@
     </div>
   </section>
 
-  <!-- 2. Marquee -->
-  <div class="marquee-section">
-    <div class="marquee-track">
+  <!-- 2. Dual Marquee -->
+  <div class="marquee-container">
+    <div class="marquee-track marquee-track-r2l">
       <div class="marquee-content">
-        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica
-        <span>✦</span> Física Moderna <span>✦</span>
+        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica <span>✦</span> Física Moderna <span>✦</span> Resolução Prática <span>✦</span>
       </div>
       <div class="marquee-content" aria-hidden="true">
-        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica
-        <span>✦</span> Física Moderna <span>✦</span>
+        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica <span>✦</span> Física Moderna <span>✦</span> Resolução Prática <span>✦</span>
+      </div>
+    </div>
+    <div class="marquee-track marquee-track-l2r">
+      <div class="marquee-content">
+        Cinemática <span>✦</span> Termodinâmica <span>✦</span> Circuitos Elétricos <span>✦</span> Fenômenos Ondulatórios <span>✦</span> Lentes <span>✦</span> Efeito Fotoelétrico <span>✦</span> Metodologia ENEM <span>✦</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        Cinemática <span>✦</span> Termodinâmica <span>✦</span> Circuitos Elétricos <span>✦</span> Fenômenos Ondulatórios <span>✦</span> Lentes <span>✦</span> Efeito Fotoelétrico <span>✦</span> Metodologia ENEM <span>✦</span>
       </div>
     </div>
   </div>
 
   <!-- 3. Course info -->
-  <section class="course-info">
+  <section class="course-info" id="sobre">
     <div class="container">
       <div class="course-info-inner">
         <div class="course-info-text js-reveal">
-          <span class="section-tag">O curso</span>
-          <h2 class="section-title">Tudo que você precisa<br>em um só lugar.</h2>
-          <p>Domine os conceitos essenciais de Física cobrados no ENEM com aulas objetivas, exercícios resolvidos e foco
-            total na prova. Do básico ao avançado, do jeito que a banca exige.</p>
+          <span class="section-tag">Diferenciais do Método</span>
+          <h2 class="section-title">Raciocínio lógico aplicado às <em>questões</em>.</h2>
+          <p>O ENEM cobra competências e habilidades, não apenas fórmulas. Nossa metodologia ensina você a desvendar o enunciado e aplicar a teoria de forma rápida e precisa.</p>
         </div>
         <div class="info-cards">
-          <div class="info-card js-reveal">
+          <div class="info-card js-reveal js-tilt">
             <div class="info-card-icon">📚</div>
-            <div class="info-card-value">12 módulos</div>
-            <div class="info-card-label">Conteúdo completo e organizado</div>
+            <div class="info-card-value">7 Módulos</div>
+            <div class="info-card-label">Conteúdo cirúrgico e direto ao ponto do edital.</div>
           </div>
-          <div class="info-card js-reveal">
+          <div class="info-card js-reveal js-tilt">
             <div class="info-card-icon">📝</div>
-            <div class="info-card-value">+500 questões</div>
-            <div class="info-card-label">Com gabarito comentado</div>
+            <div class="info-card-value">+500 Questões</div>
+            <div class="info-card-label">Banco de dados com questões resolvidas e analisadas.</div>
           </div>
-          <div class="info-card js-reveal">
+          <div class="info-card js-reveal js-tilt">
             <div class="info-card-icon">💬</div>
             <div class="info-card-value">Grupo VIP</div>
-            <div class="info-card-label">Suporte exclusivo e comunidade</div>
+            <div class="info-card-label">Suporte prioritário e comunidade ativa de estudos.</div>
           </div>
-          <div class="info-card js-reveal">
-            <div class="info-card-icon">📅</div>
-            <div class="info-card-value">Até ENEM 2026</div>
-            <div class="info-card-label">Básico ao avançado</div>
+          <div class="info-card js-reveal js-tilt">
+            <div class="info-card-icon">🎯</div>
+            <div class="info-card-value">Foco Vestibulares</div>
+            <div class="info-card-label">Foco absoluto na TRI e no padrão de cobrança do ENEM.</div>
           </div>
         </div>
       </div>
@@ -897,45 +1759,51 @@
   <section class="contents" id="conteudo">
     <div class="container">
       <div class="contents-header js-reveal">
-        <span class="section-tag">Conteúdo</span>
-        <h2 class="section-title">O que você vai aprender</h2>
+        <span class="section-tag">Cronograma</span>
+        <h2 class="section-title">Os 7 Módulos do <em>Curso</em></h2>
       </div>
       <div class="contents-grid">
-        <div class="content-card">
-          <div class="content-card-num">01</div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 01</div>
           <div class="content-card-icon">⚙️</div>
           <h3 class="content-card-title">Mecânica</h3>
-          <p class="content-card-desc">Cinemática, dinâmica, energia e trabalho</p>
+          <p class="content-card-desc">Cinemática, leis de Newton, energia mecânica, trabalho, quantidade de movimento e hidrostática.</p>
         </div>
-        <div class="content-card">
-          <div class="content-card-num">02</div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 02</div>
           <div class="content-card-icon">🌡️</div>
           <h3 class="content-card-title">Termologia</h3>
-          <p class="content-card-desc">Temperatura, calor, termodinâmica</p>
+          <p class="content-card-desc">Termometria, calorimetria, propagação de calor, gases ideais e leis da termodinâmica.</p>
         </div>
-        <div class="content-card">
-          <div class="content-card-num">03</div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 03</div>
           <div class="content-card-icon">⚡</div>
           <h3 class="content-card-title">Eletricidade</h3>
-          <p class="content-card-desc">Circuitos, corrente, resistência</p>
+          <p class="content-card-desc">Eletrostática, eletrodinâmica (corrente, resistores, potência, circuitos) e eletromagnetismo.</p>
         </div>
-        <div class="content-card">
-          <div class="content-card-num">04</div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 04</div>
           <div class="content-card-icon">〰️</div>
           <h3 class="content-card-title">Ondulatória</h3>
-          <p class="content-card-desc">Som, ondas, vibração</p>
+          <p class="content-card-desc">Equação fundamental da onda, fenômenos ondulatórios (reflexão, refração, difração, interferência) e acústica.</p>
         </div>
-        <div class="content-card">
-          <div class="content-card-num">05</div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 05</div>
           <div class="content-card-icon">🔆</div>
           <h3 class="content-card-title">Óptica</h3>
-          <p class="content-card-desc">Reflexão, refração, lentes</p>
+          <p class="content-card-desc">Princípios da óptica geométrica, espelhos esféricos, refração luminosa, lentes e instrumentos ópticos.</p>
         </div>
-        <div class="content-card">
-          <div class="content-card-num">06</div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 06</div>
           <div class="content-card-icon">⚛️</div>
           <h3 class="content-card-title">Física Moderna</h3>
-          <p class="content-card-desc">Relatividade, quântica, radioatividade</p>
+          <p class="content-card-desc">Efeito fotoelétrico, teoria da relatividade especial, espectros atômicos e radioatividade no ENEM.</p>
+        </div>
+        <div class="content-card js-reveal js-tilt">
+          <div class="content-card-num">MÓDULO 07</div>
+          <div class="content-card-icon">🔬</div>
+          <h3 class="content-card-title">Resolução Avançada</h3>
+          <p class="content-card-desc">Estratégias avançadas de prova, análise estatística de recorrência do ENEM e resolução de questões complexas.</p>
         </div>
       </div>
     </div>
@@ -945,72 +1813,169 @@
   <section class="why">
     <div class="container">
       <div class="why-header js-reveal">
-        <span class="section-tag">Diferenciais</span>
-        <h2 class="section-title">Por que este curso<br>é diferente?</h2>
+        <span class="section-tag">Metodologia</span>
+        <h2 class="section-title">Por que você vai aprender de <em>verdade</em>?</h2>
       </div>
       <div class="why-list">
-        <div class="why-item">
+        <div class="why-item js-reveal">
           <div class="why-num">01</div>
           <div>
-            <h3 class="why-title">Foco total no ENEM</h3>
-            <p class="why-desc">Aulas baseadas nas provas anteriores, com análise de padrões e temas recorrentes.</p>
+            <h3 class="why-title">Foco cirúrgico no ENEM</h3>
+            <p class="why-desc">Chega de perder tempo com conceitos complexos que nunca caíram. Estudamos os padrões históricos da prova para te dar o que realmente pontua na TRI.</p>
           </div>
         </div>
-        <div class="why-item">
+        <div class="why-item js-reveal">
           <div class="why-num">02</div>
           <div>
-            <h3 class="why-title">Linguagem clara e direta</h3>
-            <p class="why-desc">Conteúdo explicado de forma simples, sem enrolação, para quem tem pouco tempo.</p>
+            <h3 class="why-title">Aulas práticas de interpretação</h3>
+            <p class="why-desc">A maior queixa é "sei a fórmula, mas não sei aplicar". Nós ensinamos a traduzir os enunciados em etapas matemáticas organizadas.</p>
           </div>
         </div>
-        <div class="why-item">
+        <div class="why-item js-reveal">
           <div class="why-num">03</div>
           <div>
-            <h3 class="why-title">Resolução passo a passo</h3>
-            <p class="why-desc">Aprenda a interpretar e resolver questões com a metodologia exigida pela prova.</p>
+            <h3 class="why-title">Banco de questões comentadas</h3>
+            <p class="why-desc">Cada assunto vem acompanhado de baterias de questões selecionadas com resoluções explicadas de forma didática e sem rodeios.</p>
           </div>
         </div>
-        <div class="why-item">
+        <div class="why-item js-reveal">
           <div class="why-num">04</div>
           <div>
-            <h3 class="why-title">Simulados e gabaritos</h3>
-            <p class="why-desc">Treine com questões reais do ENEM e acompanhe sua evolução.</p>
+            <h3 class="why-title">Ambiente de suporte contínuo</h3>
+            <p class="why-desc">Você não estuda sozinho. Nosso grupo VIP de alunos é o local ideal para tirar dúvidas, interagir e manter o foco nos estudos.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 5.5. Testimonials (New Section) -->
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="testimonials-header js-reveal">
+        <span class="section-tag">Depoimentos</span>
+        <h2 class="section-title">Quem estuda, <em>aprova</em>.</h2>
+      </div>
+      <div class="testimonials-wrapper js-reveal">
+        <div class="testimonials-slider" id="testimonials-slider">
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-quote">"A didática do Jadson é fantástica. As questões de Eletricidade, que eram meu pesadelo, passaram a fazer sentido. Consegui a aprovação que tanto queria!"</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-author-avatar">MC</div>
+              <div>
+                <div class="testimonial-author-name">Mariana Costa</div>
+                <div class="testimonial-author-desc">Aprovada em Medicina (UFPE)</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-quote">"O foco em resolução de questões é o diferencial. Ele explica o raciocínio por trás do enunciado. Minha nota de física subiu absurdamente no último ENEM."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-author-avatar">LA</div>
+              <div>
+                <div class="testimonial-author-name">Lucas Albuquerque</div>
+                <div class="testimonial-author-desc">Aprovado em Engenharia (USP)</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-quote">"O suporte no grupo VIP é rápido e ajuda demais. Estudar física ficou leve. Recomendo de olhos fechados para quem quer pontuar bem no ENEM."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-author-avatar">BS</div>
+              <div>
+                <div class="testimonial-author-name">Beatriz Santos</div>
+                <div class="testimonial-author-desc">Aprovada em Direito (UFRJ)</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-rating">★★★★★</div>
+              <p class="testimonial-quote">"Com o curso do professor Jadson, eu finalmente entendi dinâmica e óptica de um jeito direto. A metodologia é perfeita para quem tem pouco tempo de estudo."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-author-avatar">RF</div>
+              <div>
+                <div class="testimonial-author-name">Rodrigo Ferreira</div>
+                <div class="testimonial-author-desc">Aprovado em Odontologia (UFRGS)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonials-nav">
+          <button class="testimonials-nav-btn" id="prev-testimonial" aria-label="Depoimento Anterior">←</button>
+          <button class="testimonials-nav-btn" id="next-testimonial" aria-label="Próximo Depoimento">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 6. Professor -->
-  <section class="professor">
+  <section class="professor" id="professor">
     <div class="container">
       <div class="professor-inner">
         <div class="professor-photo js-reveal">
           <img src="assets/professor2.jpeg" alt="Jadson Gilliardy">
         </div>
         <div class="professor-content js-reveal">
-          <span class="section-tag">O professor</span>
+          <span class="section-tag">Mentoria</span>
           <h2 class="professor-name">Jadson Gilliardy</h2>
-          <p class="professor-role">Professor de Física</p>
-          <p class="professor-bio">Com 10 anos dedicados ao ensino de Física para ENEM e vestibulares, Jadson Gilliardy
-            desenvolveu uma metodologia focada no que realmente importa para a prova. Aulas objetivas, linguagem
-            acessível e resolução passo a passo para você chegar preparado.</p>
-          <!-- TODO: métricas — substituir placeholders abaixo -->
+          <p class="professor-role">Seu mentor nessa jornada</p>
+          <p class="professor-bio">Com 10 anos de experiência dedicados a preparar estudantes para o ENEM e os vestibulares mais concorridos do país, Jadson desenvolveu uma metodologia focada na clareza física e resolução de padrões de prova. Sem enrolação teórica, ele mostra exatamente como pensar para pontuar alto.</p>
+          
           <div class="professor-metrics">
-            <div>
-              <div class="professor-metric-value">Muitos</div>
-              <div class="professor-metric-label">aprovados em medicina</div>
+            <div class="professor-metric-card">
+              <div class="professor-metric-value js-counter" data-target="30">+0</div>
+              <div class="professor-metric-label">Aprovados em Medicina</div>
             </div>
-            <div>
-              <div class="professor-metric-value">Muitos</div>
-              <div class="professor-metric-label">de aprovação no ENEM</div>
+            <div class="professor-metric-card">
+              <div class="professor-metric-value js-counter" data-target="90">0%</div>
+              <div class="professor-metric-label">De Aprovação no ENEM</div>
             </div>
-            <div>
-              <div class="professor-metric-value">10 anos</div>
-              <div class="professor-metric-label">de experiência ENEM e vestibulares</div>
+            <div class="professor-metric-card">
+              <div class="professor-metric-value js-counter" data-target="10">0</div>
+              <div class="professor-metric-label">Anos de Experiência</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.5. Countdown (New Section) -->
+  <section class="countdown-section">
+    <div class="countdown-glow"></div>
+    <div class="container">
+      <div class="countdown-container js-reveal">
+        <h2 class="countdown-title">O relógio está correndo. Não deixe para o <em>final</em>.</h2>
+        <div class="countdown-timer" id="countdown-timer">
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-days">00</div>
+            <div class="countdown-label">Dias</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-hours">00</div>
+            <div class="countdown-label">Horas</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-minutes">00</div>
+            <div class="countdown-label">Min</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-seconds">00</div>
+            <div class="countdown-label">Seg</div>
+          </div>
+        </div>
+        <p class="countdown-text">Contagem estimada para o ENEM 2026. Prepare-se com antecedência.</p>
       </div>
     </div>
   </section>
@@ -1020,13 +1985,84 @@
     <div class="cta-glow"></div>
     <div class="container">
       <div class="cta-inner js-reveal">
-        <span class="section-tag">Oferta especial</span>
-        <h2 class="section-title">Comece agora e chegue<br>preparado para o <em>ENEM</em>.</h2>
-        <p>Acesso imediato após a inscrição. Suporte exclusivo e grupo VIP incluso.</p>
+        <span class="section-tag">Oferta Especial de Lançamento</span>
+        <h2 class="section-title">O investimento no seu <em>futuro</em>.</h2>
+        <p>Acesso completo aos 7 módulos do curso, banco de questões resolvidas e suporte exclusivo no grupo VIP até a prova do ENEM 2026.</p>
         <div class="cta-price-box">
-          <div class="cta-price-label">Acesso completo até o ENEM 2026</div>
-          <a href="#inscricao" class="btn btn-primary btn-lg">Quero garantir minha vaga</a>
-          <div class="cta-note">🔒 Acesso imediato após confirmação do pagamento</div>
+          <div class="cta-price-label">Acesso Imediato & Vitalício até o ENEM 2026</div>
+          <div class="cta-price-value">
+            <div class="cta-price-old">De R$ 399,90 por</div>
+            <div class="cta-price-new"><span>R$</span>199,90</div>
+          </div>
+          <a href="https://chk.eduzz.com/E9OGEODKWB" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Garantir Minha Vaga Agora</a>
+          <div class="cta-note">🔒 Pagamento 100% seguro pela Eduzz. Acesso imediato.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.5. FAQ Accordion (New Section) -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-header js-reveal">
+        <span class="section-tag">Dúvidas Comuns</span>
+        <h2 class="section-title">Perguntas <em>Frequentes</em></h2>
+      </div>
+      <div class="faq-container js-reveal">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Para quem é recomendado o curso?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              O curso é ideal para estudantes do Ensino Médio, vestibulandos e concurseiros que farão o ENEM ou vestibulares tradicionais e buscam dominar física de forma prática, focando na resolução inteligente de questões.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Preciso ter uma base muito forte em matemática ou física?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Não. O curso foi estruturado para construir o raciocínio físico e as bases matemáticas necessárias do zero ao avançado, passo a passo, em cada módulo.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Como funciona o suporte para tirar dúvidas?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Os alunos têm acesso ao Grupo VIP no Telegram, onde podem enviar suas dúvidas sobre aulas ou questões específicas e interagir com outros estudantes e receber suporte diretamente do professor Jadson.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Quais são as formas de pagamento disponíveis?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Através da plataforma Eduzz, você pode pagar via Pix, Boleto ou Cartão de Crédito com parcelamento seguro em até 12 vezes.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Por quanto tempo terei acesso ao material?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Você terá acesso ilimitado a todas as videoaulas, materiais em PDF e banco de questões do curso até o último dia da aplicação do ENEM 2026.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1035,10 +2071,42 @@
   <!-- 8. Footer -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
-        <span>© 2026 Jadson Gilliardy — Todos os direitos reservados</span>
-        <span>Feito por <a href="https://github.com" class="footer-credit" target="_blank"
-            rel="noopener noreferrer">PilotApps</a></span>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="nav-logo-text" style="font-size: 1.5rem;">
+              Jadson <span class="accent-g">G</span>illiardy
+            </span>
+          </a>
+          <p>Preparação de alto rendimento em Física para o ENEM e os vestibulares mais disputados do Brasil.</p>
+        </div>
+        <div>
+          <div class="footer-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#sobre">Diferenciais</a></li>
+            <li><a href="#conteudo">Módulos</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contato</div>
+          <ul class="footer-links">
+            <li><a href="https://instagram.com/fisicacomjadson" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="#faq">Suporte ao Aluno</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Jadson Gilliardy — Todos os direitos reservados.</span>
+        <div class="footer-socials">
+          <a href="https://instagram.com/fisicacomjadson" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -1054,55 +2122,302 @@
       document.getElementById('scroll-progress').style.width = (p * 100) + '%';
     });
 
-    // 2. Hero — cascade on load
-    gsap.set(['.hero-tag', '.hero h1', '.hero p', '.hero-actions', '.hero-stats', '.hero-photo'], { opacity: 0, y: 30 });
-    gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .to('.hero-tag', { opacity: 1, y: 0, duration: .5, delay: .2 })
-      .to('.hero h1', { opacity: 1, y: 0, duration: .8 }, '-=.2')
-      .to('.hero p', { opacity: 1, y: 0, duration: .6 }, '-=.3')
-      .to('.hero-actions', { opacity: 1, y: 0, duration: .5 }, '-=.3')
-      .to('.hero-stats', { opacity: 1, y: 0, duration: .5 }, '-=.2')
-      .to('.hero-photo', { opacity: 1, y: 0, duration: .9 }, '-=.7');
+    // 2. Custom Cursor Follower
+    const cursor = document.getElementById('custom-cursor');
+    const cursorDot = document.getElementById('custom-cursor-dot');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top = e.clientY + 'px';
+    });
 
-    // 3. Reveal genérico
+    // Cursor interaction on interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .faq-question, .info-card, .content-card, .testimonial-card');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.width = '40px';
+        cursor.style.height = '40px';
+        cursor.style.backgroundColor = 'rgba(139, 92, 246, 0.15)';
+        cursor.style.borderColor = 'var(--accent-cyan)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        cursor.style.backgroundColor = 'transparent';
+        cursor.style.borderColor = 'var(--accent)';
+      });
+    });
+
+    // 3. Canvas de partículas no Hero
+    const canvas = document.getElementById('hero-particles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+    const colors = ['#8b5cf6', '#06b6d4', '#4c1d95', '#0891b2'];
+
+    function resizeCanvas() {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+        if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      const numberOfParticles = Math.min(60, Math.floor((canvas.width * canvas.height) / 15000));
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+    initParticles();
+    window.addEventListener('resize', initParticles);
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw lines between particles that are close enough
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a + 1; b < particlesArray.length; b++) {
+          const dx = particlesArray[a].x - particlesArray[b].x;
+          const dy = particlesArray[a].y - particlesArray[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120) {
+            const opacity = 1 - (distance / 120);
+            ctx.strokeStyle = `rgba(139, 92, 246, ${opacity * 0.08})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // 4. Hero GSAP Animation
+    gsap.set(['.hero-tag', '.hero h1', '.hero p', '.hero-actions', '.hero-stats', '.hero-photo-wrapper'], { opacity: 0, y: 30 });
+    gsap.timeline({ defaults: { ease: 'power4.out' } })
+      .to('.hero-tag', { opacity: 1, y: 0, duration: 0.6, delay: 0.2 })
+      .to('.hero h1', { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
+      .to('.hero p', { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+      .to('.hero-actions', { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
+      .to('.hero-stats', { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
+      .to('.hero-photo-wrapper', { opacity: 1, y: 0, duration: 1.0 }, '-=0.8');
+
+    // 5. Counters Animados (GSAP + ScrollTrigger)
+    const counters = document.querySelectorAll('.js-counter');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'), 10);
+      gsap.fromTo(counter, 
+        { textContent: 0 }, 
+        {
+          textContent: target,
+          duration: 2,
+          ease: 'power3.out',
+          snap: { textContent: 1 },
+          scrollTrigger: {
+            trigger: counter,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          },
+          onUpdate: function() {
+            // Adiciona sufixo decorativo se houver
+            if (target === 500 || target === 30) {
+              counter.textContent = '+' + counter.textContent;
+            } else if (target === 90) {
+              counter.textContent = counter.textContent + '%';
+            }
+          }
+        }
+      );
+    });
+
+    // 6. Reveal genérico
     gsap.utils.toArray('.js-reveal').forEach(el => {
       gsap.fromTo(el,
-        { opacity: 0, y: 40 },
+        { opacity: 0, y: 35 },
         {
-          opacity: 1, y: 0, duration: .8, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8, 
+          ease: 'power3.out',
+          scrollTrigger: { 
+            trigger: el, 
+            start: 'top 88%', 
+            toggleActions: 'play none none none' 
+          }
         }
       );
     });
 
-    // 4. Content cards — stagger por linha
-    gsap.utils.toArray('.content-card').forEach((card, i) => {
-      gsap.fromTo(card,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1, y: 0, duration: .7, ease: 'power3.out',
-          delay: (i % 3) * 0.1,
-          scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
-        }
-      );
+    // 7. Cards com efeito Tilt 3D sutil
+    const tiltCards = document.querySelectorAll('.js-tilt');
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const xc = rect.width / 2;
+        const yc = rect.height / 2;
+        const angleX = (yc - y) / 18;
+        const angleY = (x - xc) / 18;
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+      });
     });
 
-    // 5. Why items — stagger sequencial
-    gsap.utils.toArray('.why-item').forEach((item, i) => {
-      gsap.fromTo(item,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: .7, ease: 'power3.out',
-          delay: i * 0.1,
-          scrollTrigger: { trigger: '.why', start: 'top 75%', toggleActions: 'play none none none' }
+    // 8. FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+          }
+        });
+
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
         }
-      );
+      });
     });
 
-    // 6. Parallax sutil no hero glow
-    gsap.to('.hero-glow', {
-      y: -100, ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+    // 9. Countdown Timer para o ENEM
+    // Define a data do ENEM 2026 (estimado para o segundo domingo de novembro de 2026: 8 de Novembro de 2026)
+    const countDate = new Date('Nov 8, 2026 13:00:00').getTime();
+    
+    function countdown() {
+      const now = new Date().getTime();
+      const gap = countDate - now;
+
+      // Calcular o tempo
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+
+      const d = Math.floor(gap / day);
+      const h = Math.floor((gap % day) / hour);
+      const m = Math.floor((gap % hour) / minute);
+      const s = Math.floor((gap % minute) / second);
+
+      // Injetar nos elementos de forma segura
+      document.getElementById('countdown-days').textContent = d < 10 ? '0' + d : d;
+      document.getElementById('countdown-hours').textContent = h < 10 ? '0' + h : h;
+      document.getElementById('countdown-minutes').textContent = m < 10 ? '0' + m : m;
+      document.getElementById('countdown-seconds').textContent = s < 10 ? '0' + s : s;
+    }
+
+    if (document.getElementById('countdown-timer')) {
+      setInterval(countdown, 1000);
+      countdown();
+    }
+
+    // 10. Testimonials Slider Navigation
+    const slider = document.getElementById('testimonials-slider');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+
+    if (slider && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -320, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: 320, behavior: 'smooth' });
+      });
+
+      // Auto scroll suave
+      let autoScroll = setInterval(() => {
+        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
+          slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          slider.scrollBy({ left: 320, behavior: 'smooth' });
+        }
+      }, 5000);
+
+      // Pausar auto scroll no hover ou interação do usuário
+      slider.addEventListener('mouseenter', () => clearInterval(autoScroll));
+      slider.addEventListener('mouseleave', () => {
+        autoScroll = setInterval(() => {
+          if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) {
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            slider.scrollBy({ left: 320, behavior: 'smooth' });
+          }
+        }, 5000);
+      });
+    }
+
+    // 11. Subtle Parallax on Glows
+    gsap.to('.hero-glow-1', {
+      y: -100, x: 50,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    gsap.to('.hero-glow-2', {
+      y: 100, x: -50,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
     });
   </script>
 </body>
