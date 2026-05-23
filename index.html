@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jadson Gilliardy — Curso de Física ENEM 2026</title>
-  <meta name="description" content="Domine a Física que cai no ENEM com aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca exige.">
+  <meta name="description"
+    content="Domine a Física que cai no ENEM com aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca exige.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
-      --bg:        #0a0a0a;
-      --surface:   #111111;
-      --surface2:  #1a1a1a;
-      --accent:    #8b5cf6;
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #1a1a1a;
+      --accent: #8b5cf6;
       --accent-lt: #a78bfa;
       --accent-glow: rgba(139, 92, 246, 0.15);
-      --text:      #f0ede8;
-      --muted:     #6b6b6b;
-      --border:    #1f1f1f;
+      --text: #f0ede8;
+      --muted: #6b6b6b;
+      --border: #1f1f1f;
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -134,7 +140,7 @@
     }
 
     .nav-logo-text .accent-g {
-      color: var(--accent);
+      color: #fff;
     }
 
     .nav-logo-text .logo-full {
@@ -287,25 +293,32 @@
 
     .hero-photo-frame {
       position: relative;
-      height: 560px;
-      border-radius: 24px;
-      overflow: hidden;
-      background: var(--surface2);
+      height: 600px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
     }
 
     .hero-photo-frame img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      mask-image:
+        linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 5%, black 75%, transparent 100%);
+      mask-composite: intersect;
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 5%, black 75%, transparent 100%);
+      -webkit-mask-composite: source-in;
     }
 
     .hero-photo-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, transparent 60%);
+      background: transparent;
       pointer-events: none;
-      border-radius: 24px;
     }
 
     .hero-badge {
@@ -363,8 +376,13 @@
     }
 
     @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     /* Course info */
@@ -668,6 +686,7 @@
 
     /* Responsive */
     @media (max-width: 1024px) {
+
       .hero-inner,
       .professor-inner {
         grid-template-columns: 1fr;
@@ -755,6 +774,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div id="scroll-progress"></div>
@@ -784,7 +804,8 @@
         <div class="hero-content">
           <div class="hero-tag">✦ &nbsp;Turma ENEM 2026</div>
           <h1>Domine a <em>Física</em><br>que cai no ENEM.</h1>
-          <p>Aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca exige.</p>
+          <p>Aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca
+            exige.</p>
           <div class="hero-actions">
             <a href="#inscricao" class="btn btn-primary">Garantir minha vaga</a>
             <a href="#conteudo" class="btn btn-ghost">Ver o conteúdo →</a>
@@ -810,7 +831,7 @@
         </div>
         <div class="hero-photo">
           <div class="hero-photo-frame">
-            <img src="assets/1.png" alt="Jadson Gilliardy — Professor de Física">
+            <img src="assets/Professor1.png" alt="Jadson Gilliardy — Professor de Física">
             <div class="hero-photo-overlay"></div>
             <div class="hero-badge">
               <div class="hero-badge-name">Jadson Gilliardy</div>
@@ -826,10 +847,12 @@
   <div class="marquee-section">
     <div class="marquee-track">
       <div class="marquee-content">
-        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica <span>✦</span> Física Moderna <span>✦</span>
+        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica
+        <span>✦</span> Física Moderna <span>✦</span>
       </div>
       <div class="marquee-content" aria-hidden="true">
-        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica <span>✦</span> Física Moderna <span>✦</span>
+        Mecânica <span>✦</span> Termologia <span>✦</span> Eletricidade <span>✦</span> Ondulatória <span>✦</span> Óptica
+        <span>✦</span> Física Moderna <span>✦</span>
       </div>
     </div>
   </div>
@@ -841,7 +864,8 @@
         <div class="course-info-text js-reveal">
           <span class="section-tag">O curso</span>
           <h2 class="section-title">Tudo que você precisa<br>em um só lugar.</h2>
-          <p>Domine os conceitos essenciais de Física cobrados no ENEM com aulas objetivas, exercícios resolvidos e foco total na prova. Do básico ao avançado, do jeito que a banca exige.</p>
+          <p>Domine os conceitos essenciais de Física cobrados no ENEM com aulas objetivas, exercícios resolvidos e foco
+            total na prova. Do básico ao avançado, do jeito que a banca exige.</p>
         </div>
         <div class="info-cards">
           <div class="info-card js-reveal">
@@ -968,15 +992,17 @@
           <span class="section-tag">O professor</span>
           <h2 class="professor-name">Jadson Gilliardy</h2>
           <p class="professor-role">Professor de Física</p>
-          <p class="professor-bio">Com 10 anos dedicados ao ensino de Física para ENEM e vestibulares, Jadson Gilliardy desenvolveu uma metodologia focada no que realmente importa para a prova. Aulas objetivas, linguagem acessível e resolução passo a passo para você chegar preparado.</p>
+          <p class="professor-bio">Com 10 anos dedicados ao ensino de Física para ENEM e vestibulares, Jadson Gilliardy
+            desenvolveu uma metodologia focada no que realmente importa para a prova. Aulas objetivas, linguagem
+            acessível e resolução passo a passo para você chegar preparado.</p>
           <!-- TODO: métricas — substituir placeholders abaixo -->
           <div class="professor-metrics">
             <div>
-              <div class="professor-metric-value">[XXX]+</div>
+              <div class="professor-metric-value">Muitos</div>
               <div class="professor-metric-label">aprovados em medicina</div>
             </div>
             <div>
-              <div class="professor-metric-value">[XXX]%</div>
+              <div class="professor-metric-value">Muitos</div>
               <div class="professor-metric-label">de aprovação no ENEM</div>
             </div>
             <div>
@@ -1011,7 +1037,8 @@
     <div class="container">
       <div class="footer-inner">
         <span>© 2026 Jadson Gilliardy — Todos os direitos reservados</span>
-        <span>Feito por <a href="https://github.com" class="footer-credit" target="_blank" rel="noopener noreferrer">PilotApps</a></span>
+        <span>Feito por <a href="https://github.com" class="footer-credit" target="_blank"
+            rel="noopener noreferrer">PilotApps</a></span>
       </div>
     </div>
   </footer>
@@ -1030,18 +1057,19 @@
     // 2. Hero — cascade on load
     gsap.set(['.hero-tag', '.hero h1', '.hero p', '.hero-actions', '.hero-stats', '.hero-photo'], { opacity: 0, y: 30 });
     gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .to('.hero-tag',     { opacity: 1, y: 0, duration: .5, delay: .2 })
-      .to('.hero h1',      { opacity: 1, y: 0, duration: .8 }, '-=.2')
-      .to('.hero p',       { opacity: 1, y: 0, duration: .6 }, '-=.3')
+      .to('.hero-tag', { opacity: 1, y: 0, duration: .5, delay: .2 })
+      .to('.hero h1', { opacity: 1, y: 0, duration: .8 }, '-=.2')
+      .to('.hero p', { opacity: 1, y: 0, duration: .6 }, '-=.3')
       .to('.hero-actions', { opacity: 1, y: 0, duration: .5 }, '-=.3')
-      .to('.hero-stats',   { opacity: 1, y: 0, duration: .5 }, '-=.2')
-      .to('.hero-photo',   { opacity: 1, y: 0, duration: .9 }, '-=.7');
+      .to('.hero-stats', { opacity: 1, y: 0, duration: .5 }, '-=.2')
+      .to('.hero-photo', { opacity: 1, y: 0, duration: .9 }, '-=.7');
 
     // 3. Reveal genérico
     gsap.utils.toArray('.js-reveal').forEach(el => {
       gsap.fromTo(el,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: .8, ease: 'power3.out',
+        {
+          opacity: 1, y: 0, duration: .8, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
         }
       );
@@ -1051,7 +1079,8 @@
     gsap.utils.toArray('.content-card').forEach((card, i) => {
       gsap.fromTo(card,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: .7, ease: 'power3.out',
+        {
+          opacity: 1, y: 0, duration: .7, ease: 'power3.out',
           delay: (i % 3) * 0.1,
           scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
         }
@@ -1062,7 +1091,8 @@
     gsap.utils.toArray('.why-item').forEach((item, i) => {
       gsap.fromTo(item,
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: .7, ease: 'power3.out',
+        {
+          opacity: 1, y: 0, duration: .7, ease: 'power3.out',
           delay: i * 0.1,
           scrollTrigger: { trigger: '.why', start: 'top 75%', toggleActions: 'play none none none' }
         }
@@ -1076,4 +1106,5 @@
     });
   </script>
 </body>
+
 </html>
